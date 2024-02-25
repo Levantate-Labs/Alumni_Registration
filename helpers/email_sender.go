@@ -154,7 +154,10 @@ func SendMail(to string, qrCodeData string) error {
         <p>We look forward to your participation and contribution to make Techletics 2024 a grand success!</p>
         <p>Attached below is your personalized QR code for easy check-in at the event:</p>
         <!-- QR code image goes here -->
-        <img src="{{.QRCode}}" alt="Techletics 2024 QR Code">
+        <img src="{{.QRCode}}" alt="Techletics 2024 QR Code"> 
+		<div style="min-height:100px;background-color:black;">
+			<img src="https://techleticsassetbucket.s3.ap-south-1.amazonaws.com/levantate_banner.jpeg" alt="Levantate Banner">
+		</div>
     </body>
     </html>
     `
