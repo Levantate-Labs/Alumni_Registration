@@ -67,12 +67,7 @@ func CreateAlumni(c *fiber.Ctx) error {
 		})
 	}
 
-	if err := helpers.SendMail(email, fmt.Sprintf("https://alumniregistration-production.up.railway.app/alumni/%s", alumniID)); err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": true,
-			"data":  err.Error(),
-		})
-	}
+	go helpers.SendMail(email, fmt.Sprintf("https://alumniregistration-production.up.railway.app/alumni/%s", alumniID))
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"error": false,
