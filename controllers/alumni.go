@@ -90,6 +90,10 @@ func GetAlumni(c *fiber.Ctx) error {
 	}
 
 	return c.Render("index", fiber.Map{
-		"Name": "Noah Johny",
+		"Name":    alumni.Name,
+		"Pic":     alumni.ImageURL,
+		"Phone":   alumni.PhoneNo,
+		"Email":   alumni.Email,
+		"Passout": alumni.PassoutYear,
 	})
 }
