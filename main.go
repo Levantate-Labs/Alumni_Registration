@@ -10,6 +10,7 @@ import (
 	"github.com/akhil-is-watching/techletics_alumni_reg/storage"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/template/html/v2"
 )
 
 func init() {
@@ -23,7 +24,10 @@ func init() {
 }
 
 func main() {
-	app := fiber.New()
+	engine := html.New("./views", ".html")
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
 	app.Use(cors.New())
 	routes.InitRoutes(app)
 	config, err := config.LoadConfig()

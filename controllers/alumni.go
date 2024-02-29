@@ -76,16 +76,20 @@ func CreateAlumni(c *fiber.Ctx) error {
 }
 
 func GetAlumni(c *fiber.Ctx) error {
-	// ID := c.Params("id")
 
-	// alumniRepo := repository.NewAlumniRepository(storage.GetDB())
-	// alumni, err := alumniRepo.Get(ID)
-	// if err != nil {
-	// 	return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
-	// 		"error": true,
-	// 		"data":  "Registration not found",
-	// 	})
-	// }
+	ID := c.Params("id")
 
-	return c.Redirect("https://techletics.cce.edu.in", fiber.StatusTemporaryRedirect)
+	alumniRepo := repository.NewAlumniRepository(storage.GetDB())
+	alumni, err := alumniRepo.Get(ID)
+	fmt.Print(alumni)
+	if err != nil {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+			"error": true,
+			"data":  "Registration not found",
+		})
+	}
+
+	return c.Render("index", fiber.Map{
+		"Name": "Noah Johny",
+	})
 }
